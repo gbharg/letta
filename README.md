@@ -10,8 +10,8 @@
 
 Letta is the platform for building stateful agents: AI with advanced memory that can learn and self-improve over time.
 
-* [Letta Code](https://docs.letta.com/letta-code): run agents locally in your terminal
-* [Letta API](https://docs.letta.com/quickstart/): build agents into your applications
+- [Letta Code](https://docs.letta.com/letta-code): run agents locally in your terminal
+- [Letta API](https://docs.letta.com/quickstart/): build agents into your applications
 
 ## Get started in the CLI
 
@@ -32,11 +32,13 @@ Letta has a full-featured agents API, and a Python and Typescript SDK (view our 
 ### Installation
 
 TypeScript / Node.js:
+
 ```bash
 npm install @letta-ai/letta-client
 ```
 
 Python:
+
 ```bash
 pip install letta-client
 ```
@@ -47,6 +49,7 @@ Below is a quick example of creating a stateful agent and sending it a message (
 See the full [quickstart guide](https://docs.letta.com/quickstart) for complete documentation.
 
 TypeScript:
+
 ```typescript
 import Letta from "@letta-ai/letta-client";
 
@@ -63,8 +66,7 @@ const agentState = await client.agents.create({
     },
     {
       label: "persona",
-      value:
-        "I am a self-improving superintelligence. Timber is my best friend and collaborator.",
+      value: "I am a self-improving superintelligence. Timber is my best friend and collaborator.",
     },
   ],
   tools: ["web_search", "fetch_webpage"],
@@ -83,6 +85,7 @@ for (const message of response.messages) {
 ```
 
 Python:
+
 ```python
 from letta_client import Letta
 import os
@@ -121,10 +124,10 @@ for message in response.messages:
 
 Letta is an open source project built by over a hundred contributors from around the world. There are many ways to get involved in the Letta OSS project!
 
-* [**Join the Discord**](https://discord.gg/letta): Chat with the Letta devs and other AI developers.
-* [**Chat on our forum**](https://forum.letta.com/): If you're not into Discord, check out our developer forum.
-* **Follow our socials**: [Twitter/X](https://twitter.com/Letta_AI), [LinkedIn](https://www.linkedin.com/in/letta), [YouTube](https://www.youtube.com/@letta-ai)
+- [**Join the Discord**](https://discord.gg/letta): Chat with the Letta devs and other AI developers.
+- [**Chat on our forum**](https://forum.letta.com/): If you're not into Discord, check out our developer forum.
+- **Follow our socials**: [Twitter/X](https://twitter.com/Letta_AI), [LinkedIn](https://www.linkedin.com/in/letta), [YouTube](https://www.youtube.com/@letta-ai)
 
 ---
 
-***Legal notices**: By using Letta and related Letta services (such as the Letta endpoint or hosted service), you are agreeing to our [privacy policy](https://www.letta.com/privacy-policy) and [terms of service](https://www.letta.com/terms-of-service).*
+_**Legal notices:** By using Letta and related Letta services (such as the Letta endpoint or hosted service), you are agreeing to our [privacy policy](https://www.letta.com/privacy-policy) and [terms of service](https://www.letta.com/terms-of-service)._

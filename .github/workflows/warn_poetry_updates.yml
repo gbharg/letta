@@ -3,8 +3,8 @@ name: Check uv Dependencies Changes
 on:
   pull_request:
     paths:
-      - 'uv.lock'
-      - 'pyproject.toml'
+      - "uv.lock"
+      - "pyproject.toml"
 
 jobs:
   check-uv-changes:

@@ -25,7 +25,9 @@ This project requires **PostgreSQL** to be installed and running on your system.
 extension is ready. Here are sample steps for a case where user and database name is letta and assumes no password is set:
 
 #### 1. Enter the PostgreSQL Shell
+
 Open your terminal (or Command Prompt on Windows) and run:
+
 ```bash
 # On Mac/Linux:
 sudo -u postgres psql
@@ -34,7 +36,9 @@ sudo -u postgres psql
 psql -U postgres
 
 ```
+
 #### 2. Run Setup Commands
+
 Once inside the PostgreSQL prompt (you will see `postgres=#`), run the following SQL block:
 
 ```sql
@@ -49,6 +53,7 @@ CREATE DATABASE letta OWNER letta;
 
 -- 4. Enable the pgvector extension for vector embeddings
 CREATE EXTENSION IF NOT EXISTS vector;
+```
 
 Setup the environment variable to tell letta code to contact PostgreSQL database:
 ```shell
@@ -60,12 +65,13 @@ export LETTA_PG_URI="postgresql://${POSTGRES_USER:-letta}:${POSTGRES_PASSWORD:-l
 First, install uv using [the official instructions here](https://docs.astral.sh/uv/getting-started/installation/).
 
 Once uv is installed, navigate to the letta directory and install the Letta project with uv:
+
 ```shell
 cd letta
 eval $(uv env activate)
 uv sync --all-extras
 ```
-``` 
+
 After this you need to prep the database with initial content. You can use alembic upgrade to populate the initial
 contents from template test data.
 ```shell
@@ -75,16 +81,20 @@ uv run alembic upgrade head
 #### Running letta with uv
 
 Now when you want to use `letta`, you can use `uv run` to run any letta command:
+
 ```shell
 uv run letta server
 ```
 
 #### Installing pre-commit
+
 We recommend installing pre-commit to ensure proper formatting during development:
+
 ```
 uv run pre-commit install
 uv run pre-commit run --all-files
 ```
+
 If you don't install pre-commit, you will need to run `uv run black .` before submitting a PR.
 
 ## 2. 🛠️ Making Changes
@@ -101,15 +111,18 @@ git checkout -b feature/your-feature
 
 Now, the world is your oyster! Go ahead and craft your fabulous changes. 🎨
 
-
 #### Handling Database Migrations
+
 If you are running Letta for the first time, your database will be automatically be setup. If you are updating Letta, you may need to run migrations. To run migrations, use the following command:
+
 ```shell
 uv run alembic upgrade head
 ```
 
 #### Creating a new Database Migration
+
 If you have made changes to the database models, you will need to create a new migration. To create a new migration, use the following command:
+
 ```shell
 uv run alembic revision --autogenerate -m "Your migration message here"
 ```
@@ -123,25 +136,31 @@ Before we hit the 'Wow, I'm Done' button, let's make sure everything works as ex
 ### Run existing tests
 
 Running tests:
+
 ```
 uv run pytest -s tests
 ```
 
 Running tests if you installed via pip:
+
 ```
 pytest -s tests
 ```
 
 ### Creating new tests
+
 If you added a major feature change, please add new tests in the `tests/` directory.
 
 ## 4. 🧩 Adding new dependencies
+
 If you need to add a new dependency to Letta, please add the package via `uv add <PACKAGE_NAME>`. This will update the `pyproject.toml` and `uv.lock` files. If the dependency does not need to be installed by all users, make sure to mark the dependency as optional in the `pyproject.toml` file and if needed, create a new extra under `[project.optional-dependencies]`.
 
 ## 5. 🚀 Submitting Changes
 
 ### Check Formatting
+
 Please ensure your code is formatted correctly by running:
+
 ```
 uv run black . -l 140
 ```
@@ -170,8 +189,11 @@ Need help or just want to say hi? We're here for you. Reach out through filing a
 Thanks for making Letta even more fantastic!
 
 ## WIP - 🐋 Docker Development
+
 If you prefer to keep your resources isolated by developing purely in containers, you can start Letta in development with:
+
 ```shell
 docker compose -f compose.yaml -f development.compose.yml up
 ```
+
 This will volume mount your local codebase and reload the server on file changes.

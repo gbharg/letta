@@ -20,13 +20,7 @@
       "search_context_size_low": 0.0,
       "search_context_size_medium": 0.0
     },
-    "supported_regions": [
-      "global",
-      "us-west-2",
-      "eu-west-1",
-      "ap-southeast-1",
-      "ap-northeast-1"
-    ],
+    "supported_regions": ["global", "us-west-2", "eu-west-1", "ap-southeast-1", "ap-northeast-1"],
     "supports_audio_input": true,
     "supports_audio_output": true,
     "supports_function_calling": true,
@@ -1619,11 +1613,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -1646,11 +1636,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 2.2e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -1673,11 +1659,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -1700,11 +1682,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -1773,11 +1751,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 4.4e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -1942,11 +1916,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -1969,11 +1939,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -2278,11 +2244,7 @@
     "mode": "chat",
     "output_cost_per_token": 8e-6,
     "output_cost_per_token_batches": 4e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -2307,11 +2269,7 @@
     "mode": "chat",
     "output_cost_per_token": 8e-6,
     "output_cost_per_token_batches": 4e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -2335,11 +2293,7 @@
     "mode": "chat",
     "output_cost_per_token": 1.6e-6,
     "output_cost_per_token_batches": 8e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -2364,11 +2318,7 @@
     "mode": "chat",
     "output_cost_per_token": 1.6e-6,
     "output_cost_per_token_batches": 8e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -2392,11 +2342,7 @@
     "mode": "chat",
     "output_cost_per_token": 4e-7,
     "output_cost_per_token_batches": 2e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -2420,11 +2366,7 @@
     "mode": "chat",
     "output_cost_per_token": 4e-7,
     "output_cost_per_token_batches": 2e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -2902,11 +2844,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -2929,11 +2867,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -2957,11 +2891,7 @@
     "mode": "chat",
     "output_cost_per_token": 1e-5,
     "source": "https://azure.microsoft.com/en-us/blog/gpt-5-in-azure-ai-foundry-the-future-of-ai-apps-and-agents-starts-here/",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -2984,11 +2914,7 @@
     "max_tokens": 16384,
     "mode": "chat",
     "output_cost_per_token": 1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -3034,11 +2960,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 2e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -3061,11 +2983,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 2e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -3088,11 +3006,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 4e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -3115,11 +3029,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 4e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -3164,11 +3074,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -3191,11 +3097,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -3287,11 +3189,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.4e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -3317,11 +3215,7 @@
     "mode": "chat",
     "output_cost_per_token": 1.4e-5,
     "output_cost_per_token_priority": 2.8e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -3761,11 +3655,7 @@
     "max_tokens": 100000,
     "mode": "chat",
     "output_cost_per_token": 8e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -3786,11 +3676,7 @@
     "max_tokens": 100000,
     "mode": "chat",
     "output_cost_per_token": 8e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -3810,11 +3696,7 @@
     "max_tokens": 100000,
     "mode": "responses",
     "output_cost_per_token": 4e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -3867,11 +3749,7 @@
     "mode": "responses",
     "output_cost_per_token": 8e-5,
     "output_cost_per_token_batches": 4e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -3892,11 +3770,7 @@
     "mode": "responses",
     "output_cost_per_token": 8e-5,
     "output_cost_per_token_batches": 4e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -3916,11 +3790,7 @@
     "max_tokens": 100000,
     "mode": "chat",
     "output_cost_per_token": 4.4e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -4031,11 +3901,7 @@
     "mode": "chat",
     "output_cost_per_token": 8.8e-6,
     "output_cost_per_token_batches": 4.4e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -4060,11 +3926,7 @@
     "mode": "chat",
     "output_cost_per_token": 1.76e-6,
     "output_cost_per_token_batches": 8.8e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -4089,11 +3951,7 @@
     "mode": "chat",
     "output_cost_per_token": 4.4e-7,
     "output_cost_per_token_batches": 2.2e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -4222,11 +4080,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -4249,11 +4103,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 2.2e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -4276,11 +4126,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 4.4e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -4303,11 +4149,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -4330,11 +4172,7 @@
     "max_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -4449,11 +4287,7 @@
     "max_tokens": 100000,
     "mode": "chat",
     "output_cost_per_token": 8.8e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -7412,11 +7246,7 @@
     "input_cost_per_image": 0.02,
     "litellm_provider": "openai",
     "mode": "image_generation",
-    "supported_endpoints": [
-      "/v1/images/generations",
-      "/v1/images/edits",
-      "/v1/images/variations"
-    ]
+    "supported_endpoints": ["/v1/images/generations", "/v1/images/edits", "/v1/images/variations"]
   },
   "dall-e-3": {
     "input_cost_per_image": 0.04,
@@ -11818,11 +11648,7 @@
     "output_cost_per_reasoning_token": 2.5e-6,
     "output_cost_per_token": 2.5e-6,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -11859,11 +11685,7 @@
     "output_cost_per_token": 2.5e-6,
     "rpm": 100000,
     "source": "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash-image",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text", "image"],
     "supports_audio_output": false,
@@ -11902,11 +11724,7 @@
     "output_cost_per_token": 3e-5,
     "rpm": 100000,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text", "image"],
     "supports_audio_output": false,
@@ -11936,11 +11754,7 @@
     "output_cost_per_token": 1.2e-5,
     "output_cost_per_token_batches": 6e-6,
     "source": "https://ai.google.dev/gemini-api/docs/pricing",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": false,
@@ -11996,11 +11810,7 @@
     "output_cost_per_reasoning_token": 4e-7,
     "output_cost_per_token": 4e-7,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -12034,11 +11844,7 @@
     "output_cost_per_reasoning_token": 4e-7,
     "output_cost_per_token": 4e-7,
     "source": "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -12072,11 +11878,7 @@
     "output_cost_per_reasoning_token": 2.5e-6,
     "output_cost_per_token": 2.5e-6,
     "source": "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -12181,11 +11983,7 @@
     "output_cost_per_reasoning_token": 4e-7,
     "output_cost_per_token": 4e-7,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -12219,11 +12017,7 @@
     "output_cost_per_reasoning_token": 3.5e-6,
     "output_cost_per_token": 6e-7,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -12257,11 +12051,7 @@
     "output_cost_per_reasoning_token": 2.5e-6,
     "output_cost_per_token": 2.5e-6,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -12334,11 +12124,7 @@
     "output_cost_per_token_above_200k_tokens": 1.8e-5,
     "output_cost_per_token_batches": 6e-6,
     "source": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_input": true,
@@ -12376,11 +12162,7 @@
     "output_cost_per_token_above_200k_tokens": 1.8e-5,
     "output_cost_per_token_batches": 6e-6,
     "source": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_input": true,
@@ -12413,11 +12195,7 @@
     "mode": "chat",
     "output_cost_per_token": 3e-6,
     "source": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_input": true,
@@ -12488,11 +12266,7 @@
     "output_cost_per_token": 1e-5,
     "output_cost_per_token_above_200k_tokens": 1.5e-5,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -12528,11 +12302,7 @@
     "output_cost_per_token": 1e-5,
     "output_cost_per_token_above_200k_tokens": 1.5e-5,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supported_regions": ["global"],
@@ -12568,11 +12338,7 @@
     "output_cost_per_token": 1e-5,
     "output_cost_per_token_above_200k_tokens": 1.5e-5,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -13499,11 +13265,7 @@
     "output_cost_per_token": 2.5e-6,
     "rpm": 100000,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -13542,11 +13304,7 @@
     "output_cost_per_token": 2.5e-6,
     "rpm": 100000,
     "source": "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash-image",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text", "image"],
     "supports_audio_output": false,
@@ -13584,11 +13342,7 @@
     "output_cost_per_token": 3e-5,
     "rpm": 100000,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-preview",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text", "image"],
     "supports_audio_output": false,
@@ -13620,11 +13374,7 @@
     "tpm": 4000000,
     "output_cost_per_token_batches": 6e-6,
     "source": "https://ai.google.dev/gemini-api/docs/pricing",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": false,
@@ -13683,11 +13433,7 @@
     "output_cost_per_token": 4e-7,
     "rpm": 15,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-lite",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -13723,11 +13469,7 @@
     "output_cost_per_token": 4e-7,
     "rpm": 15,
     "source": "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -13763,11 +13505,7 @@
     "output_cost_per_token": 2.5e-6,
     "rpm": 15,
     "source": "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -13803,11 +13541,7 @@
     "output_cost_per_token": 2.5e-6,
     "rpm": 15,
     "source": "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -13843,11 +13577,7 @@
     "output_cost_per_token": 4e-7,
     "rpm": 15,
     "source": "https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -13884,11 +13614,7 @@
     "output_cost_per_token": 4e-7,
     "rpm": 15,
     "source": "https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash-lite",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -14089,11 +13815,7 @@
     "output_cost_per_token_batches": 6e-6,
     "rpm": 2000,
     "source": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_input": true,
@@ -14170,11 +13892,7 @@
     "output_cost_per_token": 3e-6,
     "rpm": 2000,
     "source": "https://ai.google.dev/pricing/gemini-3",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -14210,11 +13928,7 @@
     "output_cost_per_reasoning_token": 3e-6,
     "output_cost_per_token": 3e-6,
     "source": "https://ai.google.dev/pricing/gemini-3",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -15687,11 +15401,7 @@
     "output_cost_per_token": 8e-6,
     "output_cost_per_token_batches": 4e-6,
     "output_cost_per_token_priority": 1.4e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -15716,11 +15426,7 @@
     "mode": "chat",
     "output_cost_per_token": 8e-6,
     "output_cost_per_token_batches": 4e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -15748,11 +15454,7 @@
     "output_cost_per_token": 1.6e-6,
     "output_cost_per_token_batches": 8e-7,
     "output_cost_per_token_priority": 2.8e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -15777,11 +15479,7 @@
     "mode": "chat",
     "output_cost_per_token": 1.6e-6,
     "output_cost_per_token_batches": 8e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -15809,11 +15507,7 @@
     "output_cost_per_token": 4e-7,
     "output_cost_per_token_batches": 2e-7,
     "output_cost_per_token_priority": 8e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -15838,11 +15532,7 @@
     "mode": "chat",
     "output_cost_per_token": 4e-7,
     "output_cost_per_token_batches": 2e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -16800,11 +16490,7 @@
     "output_cost_per_token": 1e-5,
     "output_cost_per_token_flex": 5e-6,
     "output_cost_per_token_priority": 2e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -16911,11 +16597,7 @@
     "mode": "chat",
     "output_cost_per_token": 1.4e-5,
     "output_cost_per_token_priority": 2.8e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -16942,11 +16624,7 @@
     "mode": "chat",
     "output_cost_per_token": 1.4e-5,
     "output_cost_per_token_priority": 2.8e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text", "image"],
     "supports_function_calling": true,
@@ -17098,11 +16776,7 @@
     "output_cost_per_token": 1e-5,
     "output_cost_per_token_flex": 5e-6,
     "output_cost_per_token_priority": 2e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -17126,11 +16800,7 @@
     "max_tokens": 16384,
     "mode": "chat",
     "output_cost_per_token": 1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": false,
@@ -17153,11 +16823,7 @@
     "max_tokens": 16384,
     "mode": "chat",
     "output_cost_per_token": 1e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": false,
@@ -17362,11 +17028,7 @@
     "output_cost_per_token": 2e-6,
     "output_cost_per_token_flex": 1e-6,
     "output_cost_per_token_priority": 3.6e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -17396,11 +17058,7 @@
     "output_cost_per_token": 2e-6,
     "output_cost_per_token_flex": 1e-6,
     "output_cost_per_token_priority": 3.6e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -17428,11 +17086,7 @@
     "mode": "chat",
     "output_cost_per_token": 4e-7,
     "output_cost_per_token_flex": 2e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -17458,11 +17112,7 @@
     "mode": "chat",
     "output_cost_per_token": 4e-7,
     "output_cost_per_token_flex": 2e-7,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -20479,11 +20129,7 @@
     "mode": "responses",
     "output_cost_per_token": 4e-5,
     "output_cost_per_token_batches": 2e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -20507,11 +20153,7 @@
     "mode": "responses",
     "output_cost_per_token": 4e-5,
     "output_cost_per_token_batches": 2e-5,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -20657,11 +20299,7 @@
     "mode": "responses",
     "output_cost_per_token": 8e-6,
     "output_cost_per_token_batches": 4e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -20685,11 +20323,7 @@
     "mode": "responses",
     "output_cost_per_token": 8e-6,
     "output_cost_per_token_batches": 4e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/batch",
-      "/v1/responses"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/batch", "/v1/responses"],
     "supported_modalities": ["text", "image"],
     "supported_output_modalities": ["text"],
     "supports_function_calling": true,
@@ -21724,11 +21358,7 @@
     "output_cost_per_token": 1.2e-5,
     "output_cost_per_token_above_200k_tokens": 1.8e-5,
     "output_cost_per_token_batches": 6e-6,
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_input": true,
@@ -21762,11 +21392,7 @@
     "output_cost_per_token": 3e-6,
     "rpm": 2000,
     "source": "https://ai.google.dev/pricing/gemini-3",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text"],
     "supports_audio_output": false,
@@ -27597,11 +27223,7 @@
     "output_cost_per_token": 2.5e-6,
     "rpm": 100000,
     "source": "https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/image-generation#edit-an-image",
-    "supported_endpoints": [
-      "/v1/chat/completions",
-      "/v1/completions",
-      "/v1/batch"
-    ],
+    "supported_endpoints": ["/v1/chat/completions", "/v1/completions", "/v1/batch"],
     "supported_modalities": ["text", "image", "audio", "video"],
     "supported_output_modalities": ["text", "image"],
     "supports_audio_output": false,

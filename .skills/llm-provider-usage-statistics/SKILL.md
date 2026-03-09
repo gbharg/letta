@@ -9,32 +9,33 @@ Reference documentation for how different LLM providers report token usage.
 
 ## Quick Reference: Token Counting Semantics
 
-| Provider | `input_tokens` meaning | Cache tokens | Must add cache to get total? |
-|----------|------------------------|--------------|------------------------------|
-| OpenAI | TOTAL (includes cached) | `cached_tokens` is subset | No |
-| Anthropic | NON-cached only | `cache_read_input_tokens` + `cache_creation_input_tokens` | **Yes** |
-| Gemini | TOTAL (includes cached) | `cached_content_token_count` is subset | No |
+| Provider  | `input_tokens` meaning  | Cache tokens                                              | Must add cache to get total? |
+| --------- | ----------------------- | --------------------------------------------------------- | ---------------------------- |
+| OpenAI    | TOTAL (includes cached) | `cached_tokens` is subset                                 | No                           |
+| Anthropic | NON-cached only         | `cache_read_input_tokens` + `cache_creation_input_tokens` | **Yes**                      |
+| Gemini    | TOTAL (includes cached) | `cached_content_token_count` is subset                    | No                           |
 
 **Critical difference:** Anthropic's `input_tokens` excludes cached tokens, so you must add them:
+
 ```
 total_input = input_tokens + cache_read_input_tokens + cache_creation_input_tokens
 ```
 
 ## Quick Reference: Prefix Caching
 
-| Provider | Min tokens | How to enable | TTL |
-|----------|-----------|---------------|-----|
-| OpenAI | 1,024 | Automatic | ~5-10 min |
-| Anthropic | 1,024 | Requires `cache_control` breakpoints | 5 min |
-| Gemini 2.0+ | 1,024 | Automatic (implicit) | Variable |
+| Provider    | Min tokens | How to enable                        | TTL       |
+| ----------- | ---------- | ------------------------------------ | --------- |
+| OpenAI      | 1,024      | Automatic                            | ~5-10 min |
+| Anthropic   | 1,024      | Requires `cache_control` breakpoints | 5 min     |
+| Gemini 2.0+ | 1,024      | Automatic (implicit)                 | Variable  |
 
 ## Quick Reference: Reasoning/Thinking Tokens
 
-| Provider | Field name | Models |
-|----------|-----------|--------|
-| OpenAI | `reasoning_tokens` | o1, o3 models |
-| Anthropic | N/A | (thinking is in content blocks, not usage) |
-| Gemini | `thoughts_token_count` | Gemini 2.0 with thinking enabled |
+| Provider  | Field name             | Models                                     |
+| --------- | ---------------------- | ------------------------------------------ |
+| OpenAI    | `reasoning_tokens`     | o1, o3 models                              |
+| Anthropic | N/A                    | (thinking is in content blocks, not usage) |
+| Gemini    | `thoughts_token_count` | Gemini 2.0 with thinking enabled           |
 
 ## Provider Reference Files
 

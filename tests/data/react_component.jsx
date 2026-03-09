@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 
 /**
  * UserProfile component for displaying user information
@@ -22,7 +22,7 @@ const UserProfile = ({ user, onEdit }) => {
       await onEdit(userData);
       setIsEditing(false);
     } catch (error) {
-      console.error('Failed to save user data:', error);
+      console.error("Failed to save user data:", error);
     } finally {
       setLoading(false);
     }
@@ -34,9 +34,9 @@ const UserProfile = ({ user, onEdit }) => {
   };
 
   const handleInputChange = (field, value) => {
-    setUserData(prev => ({
+    setUserData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -57,14 +57,19 @@ const UserProfile = ({ user, onEdit }) => {
 
       <div className="profile-content">
         {isEditing ? (
-          <form onSubmit={(e) => { e.preventDefault(); handleSave(); }}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSave();
+            }}
+          >
             <div className="form-group">
               <label htmlFor="name">Name:</label>
               <input
                 id="name"
                 type="text"
                 value={userData.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
+                onChange={(e) => handleInputChange("name", e.target.value)}
                 required
               />
             </div>
@@ -75,7 +80,7 @@ const UserProfile = ({ user, onEdit }) => {
                 id="email"
                 type="email"
                 value={userData.email}
-                onChange={(e) => handleInputChange('email', e.target.value)}
+                onChange={(e) => handleInputChange("email", e.target.value)}
                 required
               />
             </div>
@@ -84,14 +89,16 @@ const UserProfile = ({ user, onEdit }) => {
               <label htmlFor="bio">Bio:</label>
               <textarea
                 id="bio"
-                value={userData.bio || ''}
-                onChange={(e) => handleInputChange('bio', e.target.value)}
+                value={userData.bio || ""}
+                onChange={(e) => handleInputChange("bio", e.target.value)}
                 rows={4}
               />
             </div>
 
             <div className="form-actions">
-              <button type="submit" className="save-btn">Save</button>
+              <button type="submit" className="save-btn">
+                Save
+              </button>
               <button type="button" onClick={handleCancel} className="cancel-btn">
                 Cancel
               </button>
@@ -99,9 +106,15 @@ const UserProfile = ({ user, onEdit }) => {
           </form>
         ) : (
           <div className="profile-display">
-            <p><strong>Email:</strong> {userData.email}</p>
-            <p><strong>Bio:</strong> {userData.bio || 'No bio provided'}</p>
-            <p><strong>Member since:</strong> {new Date(userData.joinDate).toLocaleDateString()}</p>
+            <p>
+              <strong>Email:</strong> {userData.email}
+            </p>
+            <p>
+              <strong>Bio:</strong> {userData.bio || "No bio provided"}
+            </p>
+            <p>
+              <strong>Member since:</strong> {new Date(userData.joinDate).toLocaleDateString()}
+            </p>
           </div>
         )}
       </div>

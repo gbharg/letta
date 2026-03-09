@@ -9,6 +9,7 @@ The webhook service integrates with Letta's execution architecture in two ways:
 ### 1. With Temporal (Recommended)
 
 When using Temporal for agent workflows, webhook calls are wrapped as Temporal activities, providing:
+
 - Built-in retry logic with configurable timeouts
 - Full observability in Temporal UI
 - Durability guarantees
@@ -20,6 +21,7 @@ Webhooks are triggered after the `create_step` activity completes in the Tempora
 ### 2. Without Temporal (Direct Execution)
 
 For direct agent execution (non-Temporal), webhooks are called directly from the `StepManager` service methods:
+
 - `update_step_success_async()` - When step completes successfully
 - `update_step_error_async()` - When step fails with an error
 - `update_step_cancelled_async()` - When step is cancelled
@@ -29,6 +31,7 @@ Webhooks are sent after the step status is committed to the database.
 ### Common Behavior
 
 In **both** cases:
+
 - ✅ Webhook failures do not prevent step completion
 - ✅ Step is always marked as complete in the database first
 - ✅ Webhook delivery is logged for debugging
@@ -162,6 +165,7 @@ python -m pytest apps/core/letta/services/webhook_service_test.py -v
 ## Implementation Details
 
 The webhook notification is sent after:
+
 1. The step is persisted to the database
 2. Step metrics are recorded
 
@@ -180,15 +184,19 @@ This allows you to monitor webhook delivery in the Temporal UI and get detailed 
 ### File Locations
 
 **Core Service:**
+
 - `apps/core/letta/services/webhook_service.py` - HTTP client for webhook delivery
 
 **Temporal Integration:**
+
 - `apps/core/letta/agents/temporal/activities/send_webhook.py` - Temporal activity wrapper
 - `apps/core/letta/agents/temporal/temporal_agent_workflow.py` - Workflow integration
 - `apps/core/letta/agents/temporal/constants.py` - Timeout constants
 
 **Non-Temporal Integration:**
-- `apps/core/letta/services/step_manager.py` - Direct calls in update_step_* methods
+
+- `apps/core/letta/services/step_manager.py` - Direct calls in update*step*\* methods
 
 **Tests:**
+
 - `apps/core/letta/services/webhook_service_test.py` - Unit tests

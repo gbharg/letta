@@ -22,6 +22,7 @@ This is different from OpenAI/Gemini where `prompt_tokens` is already the total.
 ## Prefix Caching (Prompt Caching)
 
 **Requirements:**
+
 - Minimum 1,024 tokens for Claude 3.5 Haiku/Sonnet
 - Minimum 2,048 tokens for Claude 3 Opus
 - Requires explicit `cache_control` breakpoints in messages
@@ -29,6 +30,7 @@ This is different from OpenAI/Gemini where `prompt_tokens` is already the total.
 
 **How to enable:**
 Add `cache_control` to message content:
+
 ```python
 {
     "role": "user",
@@ -43,6 +45,7 @@ Add `cache_control` to message content:
 ```
 
 **Beta header required:**
+
 ```python
 betas = ["prompt-caching-2024-07-31"]
 ```
@@ -59,6 +62,7 @@ betas = ["prompt-caching-2024-07-31"]
 In streaming mode, usage is reported in two events:
 
 1. **`message_start`**: Initial usage (may have cache info)
+
    ```python
    event.message.usage.input_tokens
    event.message.usage.output_tokens

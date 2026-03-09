@@ -2,7 +2,7 @@ name: Alembic Migration Tester
 on:
   pull_request:
     paths:
-      - '**.py'
+      - "**.py"
   workflow_dispatch:
 jobs:
   test:

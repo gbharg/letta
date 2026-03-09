@@ -12,6 +12,7 @@ Use this skill whenever you need to change the database schema or debug Alembic
 migrations in `apps/core` of the letta-cloud repo.
 
 This skill assumes:
+
 - Working directory: `apps/core`
 - Migrations: Alembic in `apps/core/alembic`
 - Python runner: `uv`
@@ -60,10 +61,12 @@ Use this pattern for changes like adding `project_id` columns via `ProjectMixin`
 ### 3. Fixing a bad migration
 
 Typical cases:
+
 - Migration fails only on SQLite (ALTER constraint limitations).
 - Migration was generated while pointing at SQLite instead of Postgres.
 
 Workflow:
+
 1. Identify the failing revision in `alembic/versions/`.
 2. If failure is SQLite-specific, prefer running migrations against Postgres by
    exporting `LETTA_PG_URI` and re-running upgrade.
@@ -80,11 +83,13 @@ Alembic picks the engine based on `letta.settings.DatabaseChoice` and
 environment variables.
 
 General rules:
+
 - For local dev stateful runs, `just ready` handles baseline migrations.
 - For schema design and production-like migrations, prefer Postgres and set
   `LETTA_PG_URI`.
 
 Workflow for Postgres-targeted migration:
+
 1. `export LETTA_PG_URI=postgresql+pg8000://postgres:postgres@localhost:5432/letta-core`
 2. From `apps/core`:
    - `uv run alembic upgrade head`

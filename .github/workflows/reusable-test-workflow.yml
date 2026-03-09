@@ -4,72 +4,72 @@ on:
   workflow_call:
     inputs:
       test-type:
-        description: 'Type of tests to run (unit, integration, docker, send-message, sqlite)'
+        description: "Type of tests to run (unit, integration, docker, send-message, sqlite)"
         required: true
         type: string
       core-directory:
-        description: 'Working directory for commands. Uses . (root) by default.'
+        description: "Working directory for commands. Uses . (root) by default."
         required: false
         type: string
-        default: '.'
+        default: "."
       install-args:
-        description: 'uv sync arguments'
+        description: "uv sync arguments"
         required: true
         type: string
       test-command:
-        description: 'Command to run tests'
+        description: "Command to run tests"
         required: false
         type: string
-        default: 'uv run --frozen pytest -svv'
+        default: "uv run --frozen pytest -svv"
       test-path-prefix:
-        description: 'Prefix for test path (e.g., tests/)'
+        description: "Prefix for test path (e.g., tests/)"
         required: false
         type: string
-        default: 'tests/'
+        default: "tests/"
       timeout-minutes:
-        description: 'Timeout in minutes'
+        description: "Timeout in minutes"
         required: false
         type: number
         default: 15
       runner:
-        description: 'Runner to use'
+        description: "Runner to use"
         required: false
         type: string
         default: '["self-hosted", "small"]'
       matrix-strategy:
-        description: 'JSON string for matrix strategy'
+        description: "JSON string for matrix strategy"
         required: false
         type: string
-        default: '{}'
+        default: "{}"
       changed-files-pattern:
-        description: 'Pattern for changed files detection'
+        description: "Pattern for changed files detection"
         required: false
         type: string
         default: |
           **
           .github/workflows/reusable-test-workflow.yml
       skip-fern-generation:
-        description: 'Skip Fern SDK generation'
+        description: "Skip Fern SDK generation"
         required: false
         type: boolean
         default: false
       use-docker:
-        description: 'Use Docker for tests'
+        description: "Use Docker for tests"
         required: false
         type: boolean
         default: false
       ref:
-        description: 'Git ref to wait for checks on'
+        description: "Git ref to wait for checks on"
         required: false
         type: string
         default: ${{ github.sha }}
       use-redis:
-        description: 'Use Redis for tests'
+        description: "Use Redis for tests"
         required: false
         type: boolean
         default: false
       is-external-pr:
-        description: 'Whether this is an external PR that needs protection'
+        description: "Whether this is an external PR that needs protection"
         required: false
         type: boolean
         default: false

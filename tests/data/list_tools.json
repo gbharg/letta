@@ -6,9 +6,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "archival_memory_insert",
-    "tags": [
-      "letta_core"
-    ],
+    "tags": ["letta_core"],
     "source_code": "def archival_memory_insert(self: \"Agent\", content: str) -> Optional[str]:\n    \"\"\"\n    Add to archival memory. Make sure to phrase the memory contents such that it can be easily queried later.\n\n    Args:\n        content (str): Content to write to the memory. All unicode (including emojis) are supported.\n\n    Returns:\n        Optional[str]: None is always returned as this function does not produce a response.\n    \"\"\"\n    self.passage_manager.insert_passage(\n        agent_state=self.agent_state,\n        text=content,\n        actor=self.user,\n    )\n    return None\n",
     "json_schema": {
       "name": "archival_memory_insert",
@@ -21,9 +19,7 @@
             "description": "Content to write to the memory. All unicode (including emojis) are supported."
           }
         },
-        "required": [
-          "content"
-        ]
+        "required": ["content"]
       }
     },
     "args_json_schema": null,
@@ -40,9 +36,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "archival_memory_search",
-    "tags": [
-      "letta_core"
-    ],
+    "tags": ["letta_core"],
     "source_code": "def archival_memory_search(self: \"Agent\", query: str, page: Optional[int] = 0, start: Optional[int] = 0) -> Optional[str]:\n    \"\"\"\n    Search archival memory using semantic (embedding-based) search.\n\n    Args:\n        query (str): String to search for.\n        page (Optional[int]): Allows you to page through results. Only use on a follow-up query. Defaults to 0 (first page).\n        start (Optional[int]): Starting index for the search results. Defaults to 0.\n\n    Returns:\n        str: Query result string\n    \"\"\"\n\n    from letta.constants import RETRIEVAL_QUERY_DEFAULT_PAGE_SIZE\n\n    if page is None or (isinstance(page, str) and page.lower().strip() == \"none\"):\n        page = 0\n    try:\n        page = int(page)\n    except:\n        raise ValueError(f\"'page' argument must be an integer\")\n    count = RETRIEVAL_QUERY_DEFAULT_PAGE_SIZE\n\n    try:\n        # Get results using passage manager\n        all_results = self.agent_manager.list_passages(\n            actor=self.user,\n            agent_id=self.agent_state.id,\n            query_text=query,\n            limit=count + start,  # Request enough results to handle offset\n            embedding_config=self.agent_state.embedding_config,\n            embed_query=True,\n        )\n\n        # Apply pagination\n        end = min(count + start, len(all_results))\n        paged_results = all_results[start:end]\n\n        # Format results to match previous implementation\n        formatted_results = [{\"timestamp\": str(result.created_at), \"content\": result.text} for result in paged_results]\n\n        return formatted_results, len(formatted_results)\n\n    except Exception as e:\n        raise e\n",
     "json_schema": {
       "name": "archival_memory_search",
@@ -63,9 +57,7 @@
             "description": "Starting index for the search results. Defaults to 0."
           }
         },
-        "required": [
-          "query"
-        ]
+        "required": ["query"]
       }
     },
     "args_json_schema": null,
@@ -82,9 +74,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "conversation_search",
-    "tags": [
-      "letta_core"
-    ],
+    "tags": ["letta_core"],
     "source_code": "def conversation_search(self: \"Agent\", query: str, page: Optional[int] = 0) -> Optional[str]:\n    \"\"\"\n    Search prior conversation history using case-insensitive string matching.\n\n    Args:\n        query (str): String to search for.\n        page (int): Allows you to page through results. Only use on a follow-up query. Defaults to 0 (first page).\n\n    Returns:\n        str: Query result string\n    \"\"\"\n\n    import math\n\n    from letta.constants import RETRIEVAL_QUERY_DEFAULT_PAGE_SIZE\n    from letta.utils import json_dumps\n\n    if page is None or (isinstance(page, str) and page.lower().strip() == \"none\"):\n        page = 0\n    try:\n        page = int(page)\n    except:\n        raise ValueError(f\"'page' argument must be an integer\")\n    count = RETRIEVAL_QUERY_DEFAULT_PAGE_SIZE\n    # TODO: add paging by page number. currently cursor only works with strings.\n    # original: start=page * count\n    messages = self.message_manager.list_user_messages_for_agent(\n        agent_id=self.agent_state.id,\n        actor=self.user,\n        query_text=query,\n        limit=count,\n    )\n    total = len(messages)\n    num_pages = math.ceil(total / count) - 1  # 0 index\n    if len(messages) == 0:\n        results_str = f\"No results found.\"\n    else:\n        results_pref = f\"Showing {len(messages)} of {total} results (page {page}/{num_pages}):\"\n        results_formatted = [message.text for message in messages]\n        results_str = f\"{results_pref} {json_dumps(results_formatted)}\"\n    return results_str\n",
     "json_schema": {
       "name": "conversation_search",
@@ -101,9 +91,7 @@
             "description": "Allows you to page through results. Only use on a follow-up query. Defaults to 0 (first page)."
           }
         },
-        "required": [
-          "query"
-        ]
+        "required": ["query"]
       }
     },
     "args_json_schema": null,
@@ -120,10 +108,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "conversation_search_date",
-    "tags": [
-      "base",
-      "letta-base"
-    ],
+    "tags": ["base", "letta-base"],
     "source_code": "def conversation_search_date(self: \"Agent\", start_date: str, end_date: str, page: Optional[int] = 0) -> Optional[str]:\n    \"\"\"\n    Search prior conversation history using a dte range.\n\n    Args:\n        start_date (str): The start of the date range to search, in the format 'YYYY-MM-DD'.\n        end_date (str): The end of the date range to search, in the format 'YYYY-MM-DD'.\n        page (int): Allows you to page through results. Only use on a follow-up query. Defaults to 0 (first page).\n\n    Returns:\n        str: Query result string\n    \"\"\"\n    import math\n    from datetime import datetime\n\n    from letta.constants import RETRIEVAL_QUERY_DEFAULT_PAGE_SIZE\n    from letta.utils import json_dumps\n\n    if page is None or (isinstance(page, str) and page.lower().strip() == \"none\"):\n        page = 0\n    try:\n        page = int(page)\n        if page < 0:\n            raise ValueError\n    except:\n        raise ValueError(f\"'page' argument must be an integer\")\n\n    # Convert date strings to datetime objects\n    try:\n        start_datetime = datetime.strptime(start_date, \"%Y-%m-%d\").replace(hour=0, minute=0, second=0, microsecond=0)\n        end_datetime = datetime.strptime(end_date, \"%Y-%m-%d\").replace(hour=23, minute=59, second=59, microsecond=999999)\n    except ValueError:\n        raise ValueError(\"Dates must be in the format 'YYYY-MM-DD'\")\n\n    count = RETRIEVAL_QUERY_DEFAULT_PAGE_SIZE\n    results = self.message_manager.list_user_messages_for_agent(\n        # TODO: add paging by page number. currently cursor only works with strings.\n        agent_id=self.agent_state.id,\n        actor=self.user,\n        start_date=start_datetime,\n        end_date=end_datetime,\n        limit=count,\n    )\n    total = len(results)\n    num_pages = math.ceil(total / count) - 1  # 0 index\n    if len(results) == 0:\n        results_str = f\"No results found.\"\n    else:\n        results_pref = f\"Showing {len(results)} of {total} results (page {page}/{num_pages}):\"\n        results_formatted = [f\"timestamp: {d['timestamp']}, {d['message']['role']} - {d['message']['content']}\" for d in results]\n        results_str = f\"{results_pref} {json_dumps(results_formatted)}\"\n    return results_str\n",
     "json_schema": {
       "name": "conversation_search_date",
@@ -144,10 +129,7 @@
             "description": "Allows you to page through results. Only use on a follow-up query. Defaults to 0 (first page)."
           }
         },
-        "required": [
-          "start_date",
-          "end_date"
-        ]
+        "required": ["start_date", "end_date"]
       }
     },
     "args_json_schema": null,
@@ -164,9 +146,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "send_message",
-    "tags": [
-      "letta_core"
-    ],
+    "tags": ["letta_core"],
     "source_code": "def send_message(self: \"Agent\", message: str) -> Optional[str]:\n    \"\"\"\n    Sends a message to the human user.\n\n    Args:\n        message (str): Message contents. All unicode (including emojis) are supported.\n\n    Returns:\n        Optional[str]: None is always returned as this function does not produce a response.\n    \"\"\"\n    # FIXME passing of msg_obj here is a hack, unclear if guaranteed to be the correct reference\n    self.interface.assistant_message(message)  # , msg_obj=self._messages[-1])\n    return None\n",
     "json_schema": {
       "name": "send_message",
@@ -179,9 +159,7 @@
             "description": "Message contents. All unicode (including emojis) are supported."
           }
         },
-        "required": [
-          "message"
-        ]
+        "required": ["message"]
       }
     },
     "args_json_schema": null,
@@ -198,9 +176,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "core_memory_append",
-    "tags": [
-      "letta_memory_core"
-    ],
+    "tags": ["letta_memory_core"],
     "source_code": "def core_memory_append(agent_state: \"AgentState\", label: str, content: str) -> Optional[str]:  # type: ignore\n    \"\"\"\n    Append to the contents of core memory.\n\n    Args:\n        label (str): Section of the memory to be edited (persona or human).\n        content (str): Content to write to the memory. All unicode (including emojis) are supported.\n\n    Returns:\n        Optional[str]: None is always returned as this function does not produce a response.\n    \"\"\"\n    current_value = str(agent_state.memory.get_block(label).value)\n    new_value = current_value + \"\\n\" + str(content)\n    agent_state.memory.update_block_value(label=label, value=new_value)\n    return None\n",
     "json_schema": {
       "name": "core_memory_append",
@@ -217,10 +193,7 @@
             "description": "Content to write to the memory. All unicode (including emojis) are supported."
           }
         },
-        "required": [
-          "label",
-          "content"
-        ]
+        "required": ["label", "content"]
       }
     },
     "args_json_schema": null,
@@ -237,9 +210,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "core_memory_replace",
-    "tags": [
-      "letta_memory_core"
-    ],
+    "tags": ["letta_memory_core"],
     "source_code": "def core_memory_replace(agent_state: \"AgentState\", label: str, old_content: str, new_content: str) -> Optional[str]:  # type: ignore\n    \"\"\"\n    Replace the contents of core memory. To delete memories, use an empty string for new_content.\n\n    Args:\n        label (str): Section of the memory to be edited (persona or human).\n        old_content (str): String to replace. Must be an exact match.\n        new_content (str): Content to write to the memory. All unicode (including emojis) are supported.\n\n    Returns:\n        Optional[str]: None is always returned as this function does not produce a response.\n    \"\"\"\n    current_value = str(agent_state.memory.get_block(label).value)\n    if old_content not in current_value:\n        raise ValueError(f\"Old content '{old_content}' not found in memory block '{label}'\")\n    new_value = current_value.replace(str(old_content), str(new_content))\n    agent_state.memory.update_block_value(label=label, value=new_value)\n    return None\n",
     "json_schema": {
       "name": "core_memory_replace",
@@ -260,11 +231,7 @@
             "description": "Content to write to the memory. All unicode (including emojis) are supported."
           }
         },
-        "required": [
-          "label",
-          "old_content",
-          "new_content"
-        ]
+        "required": ["label", "old_content", "new_content"]
       }
     },
     "args_json_schema": null,
@@ -302,11 +269,7 @@
             "description": "Job title to target."
           }
         },
-        "required": [
-          "industry",
-          "location",
-          "job_title"
-        ]
+        "required": ["industry", "location", "job_title"]
       }
     },
     "args_json_schema": null,
@@ -336,9 +299,7 @@
             "description": "Name of the company."
           }
         },
-        "required": [
-          "company_name"
-        ]
+        "required": ["company_name"]
       }
     },
     "args_json_schema": null,
@@ -376,11 +337,7 @@
             "description": "Lead's job title."
           }
         },
-        "required": [
-          "name",
-          "company",
-          "job_title"
-        ]
+        "required": ["name", "company", "job_title"]
       }
     },
     "args_json_schema": null,
@@ -410,9 +367,7 @@
             "description": "Name of the lead."
           }
         },
-        "required": [
-          "lead_name"
-        ]
+        "required": ["lead_name"]
       }
     },
     "args_json_schema": null,
@@ -458,13 +413,7 @@
             "description": "Case study to include in the email."
           }
         },
-        "required": [
-          "template",
-          "lead_name",
-          "company",
-          "context",
-          "case_study"
-        ]
+        "required": ["template", "lead_name", "company", "context", "case_study"]
       }
     },
     "args_json_schema": null,
@@ -494,9 +443,7 @@
             "description": "Name of the lead."
           }
         },
-        "required": [
-          "lead_name"
-        ]
+        "required": ["lead_name"]
       }
     },
     "args_json_schema": null,
@@ -530,10 +477,7 @@
             "description": "Time range for analysis (e.g., 'last_week')."
           }
         },
-        "required": [
-          "campaign_name",
-          "time_range"
-        ]
+        "required": ["campaign_name", "time_range"]
       }
     },
     "args_json_schema": null,
@@ -575,9 +519,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "peopledatalabs_search_person_data",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef peopledatalabs_search_person_data(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['PEOPLEDATALABS_SEARCH_PERSON_DATA'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "peopledatalabs_search_person_data",
@@ -614,9 +556,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "request_heartbeat"
-        ]
+        "required": ["request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -633,9 +573,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "peopledatalabs_enrich_person_data",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef peopledatalabs_enrich_person_data(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['PEOPLEDATALABS_ENRICH_PERSON_DATA'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "peopledatalabs_enrich_person_data",
@@ -740,9 +678,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "request_heartbeat"
-        ]
+        "required": ["request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -772,9 +708,7 @@
             "description": "The search query."
           }
         },
-        "required": [
-          "query"
-        ]
+        "required": ["query"]
       }
     },
     "args_json_schema": null,
@@ -791,9 +725,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "googlesheets_get_spreadsheet_info",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef googlesheets_get_spreadsheet_info(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['GOOGLESHEETS_GET_SPREADSHEET_INFO'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "googlesheets_get_spreadsheet_info",
@@ -810,10 +742,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "spreadsheet_id",
-          "request_heartbeat"
-        ]
+        "required": ["spreadsheet_id", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -830,9 +759,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "googlesheets_batch_get",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef googlesheets_batch_get(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['GOOGLESHEETS_BATCH_GET'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "googlesheets_batch_get",
@@ -853,10 +780,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "spreadsheet_id",
-          "request_heartbeat"
-        ]
+        "required": ["spreadsheet_id", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -873,9 +797,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "googlesheets_clear_values",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef googlesheets_clear_values(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['GOOGLESHEETS_CLEAR_VALUES'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "googlesheets_clear_values",
@@ -896,11 +818,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "spreadsheet_id",
-          "range",
-          "request_heartbeat"
-        ]
+        "required": ["spreadsheet_id", "range", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -917,9 +835,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "googlesheets_batch_update",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef googlesheets_batch_update(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['GOOGLESHEETS_BATCH_UPDATE'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "googlesheets_batch_update",
@@ -952,12 +868,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "spreadsheet_id",
-          "sheet_name",
-          "values",
-          "request_heartbeat"
-        ]
+        "required": ["spreadsheet_id", "sheet_name", "values", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -974,9 +885,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "googlesheets_create_google_sheet1",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef googlesheets_create_google_sheet1(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['GOOGLESHEETS_CREATE_GOOGLE_SHEET1'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "googlesheets_create_google_sheet1",
@@ -993,10 +902,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "title",
-          "request_heartbeat"
-        ]
+        "required": ["title", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1013,9 +919,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "googlesheets_lookup_spreadsheet_row",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef googlesheets_lookup_spreadsheet_row(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['GOOGLESHEETS_LOOKUP_SPREADSHEET_ROW'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "googlesheets_lookup_spreadsheet_row",
@@ -1040,11 +944,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "spreadsheet_id",
-          "query",
-          "request_heartbeat"
-        ]
+        "required": ["spreadsheet_id", "query", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1061,9 +961,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "calendly_list_user_busy_times",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef calendly_list_user_busy_times(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['CALENDLY_LIST_USER_BUSY_TIMES'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "calendly_list_user_busy_times",
@@ -1088,12 +986,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "user",
-          "start_time",
-          "end_time",
-          "request_heartbeat"
-        ]
+        "required": ["user", "start_time", "end_time", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1135,9 +1028,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "cal_get_available_slots_info",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef cal_get_available_slots_info(**kwargs):\n    from composio_langchain import ComposioToolSet\n    import os\n\n    entity_id = os.getenv('COMPOSIO_ENTITY', 'default')\n    composio_toolset = ComposioToolSet(entity_id=entity_id)\n    response = composio_toolset.execute_action(action='CAL_GET_AVAILABLE_SLOTS_INFO', params=kwargs)\n\n    if response[\"error\"]:\n        raise RuntimeError(response[\"error\"])\n    return response[\"data\"]\n    ",
     "json_schema": {
       "name": "cal_get_available_slots_info",
@@ -1197,12 +1088,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "startTime",
-          "endTime",
-          "eventTypeId",
-          "request_heartbeat"
-        ]
+        "required": ["startTime", "endTime", "eventTypeId", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1219,9 +1105,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "peopledatalabs_natural_language_query_action",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef peopledatalabs_natural_language_query_action(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['PEOPLEDATALABS_NATURAL_LANGUAGE_QUERY_ACTION'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "peopledatalabs_natural_language_query_action",
@@ -1238,10 +1122,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "query",
-          "request_heartbeat"
-        ]
+        "required": ["query", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1258,9 +1139,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "apollo_people_search",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef apollo_people_search(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['APOLLO_PEOPLE_SEARCH'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "apollo_people_search",
@@ -1341,9 +1220,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "request_heartbeat"
-        ]
+        "required": ["request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1360,9 +1237,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "apollo_organization_search",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef apollo_organization_search(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['APOLLO_ORGANIZATION_SEARCH'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "apollo_organization_search",
@@ -1422,9 +1297,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "request_heartbeat"
-        ]
+        "required": ["request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1441,9 +1314,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "apollo_people_enrichment",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef apollo_people_enrichment(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['APOLLO_PEOPLE_ENRICHMENT'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "apollo_people_enrichment",
@@ -1504,9 +1375,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "request_heartbeat"
-        ]
+        "required": ["request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1523,9 +1392,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "apollo_organization_enrichment",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef apollo_organization_enrichment(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['APOLLO_ORGANIZATION_ENRICHMENT'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "apollo_organization_enrichment",
@@ -1542,10 +1409,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "domain",
-          "request_heartbeat"
-        ]
+        "required": ["domain", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1562,9 +1426,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "exa_search",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef exa_search(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['EXA_SEARCH'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "exa_search",
@@ -1647,10 +1509,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "query",
-          "request_heartbeat"
-        ]
+        "required": ["query", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1667,9 +1526,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "exa_similarlink",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "\ndef exa_similarlink(**kwargs):\n    from composio import Action, App, Tag\n    from composio_langchain import ComposioToolSet\n\n    composio_toolset = ComposioToolSet()\n    tool = composio_toolset.get_tools(actions=['EXA_SIMILARLINK'])[0]\n    return tool.func(**kwargs)['data']\n    ",
     "json_schema": {
       "name": "exa_similarlink",
@@ -1732,10 +1589,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "url",
-          "request_heartbeat"
-        ]
+        "required": ["url", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1794,10 +1648,7 @@
             "description": "End date and time in ISO 8601 format \n(e.g., \"2025-01-02T00:00:00Z\"), representing the end of the range."
           }
         },
-        "required": [
-          "startTime",
-          "endTime"
-        ]
+        "required": ["startTime", "endTime"]
       }
     },
     "args_json_schema": null,
@@ -1831,10 +1682,7 @@
             "description": "End date and time in ISO 8601 format \n(e.g., \"2025-01-02T00:00:00Z\"), representing the end of the range."
           }
         },
-        "required": [
-          "startTime",
-          "endTime"
-        ]
+        "required": ["startTime", "endTime"]
       }
     },
     "args_json_schema": null,
@@ -1876,9 +1724,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "perplexityai_perplexity_ai_search",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "def perplexityai_perplexity_ai_search(**kwargs):\n    raise RuntimeError(\"Something went wrong - we should never be using the persisted source code for Composio. Please reach out to Letta team\")",
     "json_schema": {
       "name": "perplexityai_perplexity_ai_search",
@@ -1890,12 +1736,7 @@
             "type": "string",
             "description": "The name of the model to use for generating completions. Choose a model based on the desired balance between performance and resource usage. For more infromation check https://docs.perplexity.ai/guides/model-cards. Please provide a value of type string.",
             "default": "sonar",
-            "enum": [
-              "sonar",
-              "sonar-reasoning-pro",
-              "sonar-reasoning",
-              "sonar-pro"
-            ]
+            "enum": ["sonar", "sonar-reasoning-pro", "sonar-reasoning", "sonar-pro"]
           },
           "systemContent": {
             "type": "string",
@@ -1955,11 +1796,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "systemContent",
-          "userContent",
-          "request_heartbeat"
-        ]
+        "required": ["systemContent", "userContent", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -1993,9 +1830,7 @@
             "description": "Number of top results to retrieve, defaults to 0 (do not change unless the user requests it)."
           }
         },
-        "required": [
-          "query_text"
-        ]
+        "required": ["query_text"]
       }
     },
     "args_json_schema": null,
@@ -2025,9 +1860,7 @@
             "description": "The reason for the escalation."
           }
         },
-        "required": [
-          "reason"
-        ]
+        "required": ["reason"]
       }
     },
     "args_json_schema": null,
@@ -2057,9 +1890,7 @@
             "description": "The order number to check on."
           }
         },
-        "required": [
-          "order_number"
-        ]
+        "required": ["order_number"]
       }
     },
     "args_json_schema": null,
@@ -2089,9 +1920,7 @@
             "description": "The reason for the termination."
           }
         },
-        "required": [
-          "reason"
-        ]
+        "required": ["reason"]
       }
     },
     "args_json_schema": null,
@@ -2125,10 +1954,7 @@
             "description": "The cancellation reason."
           }
         },
-        "required": [
-          "order_number",
-          "reason"
-        ]
+        "required": ["order_number", "reason"]
       }
     },
     "args_json_schema": null,
@@ -2145,9 +1971,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "tavily_tavily_search",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "def tavily_tavily_search(**kwargs):\n    raise RuntimeError(\"Something went wrong - we should never be using the persisted source code for Composio. Please reach out to Letta team\")",
     "json_schema": {
       "name": "tavily_tavily_search",
@@ -2201,10 +2025,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "query",
-          "request_heartbeat"
-        ]
+        "required": ["query", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -2221,9 +2042,7 @@
     "source_type": "python",
     "organization_id": "org-4ab3f6e8-9a44-4bee-aeb6-c681cbbc7bf6",
     "name": "firecrawl_extract",
-    "tags": [
-      "composio"
-    ],
+    "tags": ["composio"],
     "source_code": "def firecrawl_extract(**kwargs):\n    raise RuntimeError(\"Something went wrong - we should never be using the persisted source code for Composio. Please reach out to Letta team\")",
     "json_schema": {
       "name": "firecrawl_extract",
@@ -2258,10 +2077,7 @@
             "description": "Request an immediate heartbeat after function execution. Set to `True` if you want to send a follow-up message or run a follow-up function."
           }
         },
-        "required": [
-          "urls",
-          "request_heartbeat"
-        ]
+        "required": ["urls", "request_heartbeat"]
       }
     },
     "args_json_schema": null,
@@ -2295,10 +2111,7 @@
             "description": "Your in-depth findings."
           }
         },
-        "required": [
-          "top_level_summary",
-          "findings"
-        ]
+        "required": ["top_level_summary", "findings"]
       }
     },
     "args_json_schema": null,
@@ -2340,12 +2153,7 @@
             "description": "The email reply itself."
           }
         },
-        "required": [
-          "personalization",
-          "coherence",
-          "tone",
-          "response_body"
-        ]
+        "required": ["personalization", "coherence", "tone", "response_body"]
       }
     },
     "args_json_schema": null,
@@ -2379,9 +2187,7 @@
             "description": "Number of top results to retrieve, defaults to 0 (do not change unless the user requests it)."
           }
         },
-        "required": [
-          "query_text"
-        ]
+        "required": ["query_text"]
       }
     },
     "args_json_schema": null,
@@ -2415,10 +2221,7 @@
             "description": "Final summary of the queries and the results that you found."
           }
         },
-        "required": [
-          "pinecone_query_results",
-          "summary"
-        ]
+        "required": ["pinecone_query_results", "summary"]
       }
     },
     "args_json_schema": null,

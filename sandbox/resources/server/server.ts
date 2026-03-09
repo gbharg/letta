@@ -1,5 +1,5 @@
-import { createServer } from "http";
 import { unlinkSync, existsSync } from "fs";
+import { createServer } from "http";
 import { runUserFunction } from "./entrypoint.js";
 
 const SOCKET_PATH = "/tmp/my_unix_socket.sock";
@@ -16,13 +16,13 @@ if (existsSync(SOCKET_PATH)) {
 const server = createServer((req, res) => {
   let data = "";
 
-  req.on("data", chunk => {
+  req.on("data", (chunk) => {
     data += chunk;
   });
 
   req.on("end", () => {
     try {
-      if (data.length > 0){
+      if (data.length > 0) {
         const response = runUserFunction(data);
         res.writeHead(200);
         res.end(JSON.stringify(response));

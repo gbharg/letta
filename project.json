@@ -34,10 +34,7 @@
     "debug": {
       "executor": "@nxlv/python:run-commands",
       "options": {
-        "commands": [
-          "./otel/start-otel-collector.sh",
-          "uv run letta server --debug --reload"
-        ],
+        "commands": ["./otel/start-otel-collector.sh", "uv run letta server --debug --reload"],
         "parallel": true,
         "cwd": "apps/core"
       }

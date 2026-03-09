@@ -8,8 +8,8 @@ on:
     branches:
       - main
     paths:
-      - 'fern/openapi.json'
-      - 'fern/openapi-overrides.yml'
+      - "fern/openapi.json"
+      - "fern/openapi-overrides.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
